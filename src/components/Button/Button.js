@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 export default class Button extends React.PureComponent {
     onMoveBtnClick = () => {
         const { x, y } = this.props.shape;
+
+
+        // !!! передать массив и функцию которая будет создавать новый массив и ложить в payload
         this.props.move(x + 1, y + 1);
     }
 

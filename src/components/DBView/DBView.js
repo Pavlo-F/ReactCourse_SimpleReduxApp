@@ -1,19 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DBView = ({ row }) => (
-    <div>
-        {JSON.stringify(row)}
-    </div>
-);
+export default class DBView extends React.PureComponent {
+    render() {
+        const { raw, isFetching, error } = this.props;
 
-export default DBView;
+
+        if (isFetching) {
+            return (
+                <div>
+                    data loading...
+                </div>
+            );
+        }
+
+        if (error) {
+            return (
+                <div>
+                    error loading data from database. {error}
+                </div>
+            );
+        }
+
+        return (
+            <div>
+                {JSON.stringify(raw)}
+            </div>
+        );
+    }
+}
 
 
 DBView.propTypes = {
-    data: PropTypes.object,
-};
-
-DBView.defaultProps = {
-    data: {},
+    props: PropTypes.object,
 };
