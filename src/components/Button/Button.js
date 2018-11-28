@@ -8,6 +8,10 @@ export default class Button extends React.PureComponent {
         this.props.move(x + 1, y + 1);
     }
 
+    onShowDBDataBtnClick = () => {
+        this.props.getDBData("sss");
+    }
+
     render() {
         const { x, y } = this.props.shape;
 
@@ -15,6 +19,9 @@ export default class Button extends React.PureComponent {
             <div>
                 <button onClick={this.onMoveBtnClick} >
                     Шаг
+                </button>
+                <button onClick={this.onShowDBDataBtnClick} >
+                    Данные БД
                 </button>
                 <div>
                     current point: {x}, {y}
@@ -26,6 +33,7 @@ export default class Button extends React.PureComponent {
 
 Button.propTypes = {
     move: PropTypes.func.isRequired,
+    getDBData: PropTypes.func.isRequired,
     shape: PropTypes.shape({
         x: PropTypes.number,
         y: PropTypes.number,
@@ -33,5 +41,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    shape: { x: 0, y: 0 },
-}
+    shape: {
+        x: 0,
+        y: 0,
+    },
+};

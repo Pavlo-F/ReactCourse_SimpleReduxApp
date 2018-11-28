@@ -26,4 +26,4 @@ Square.propTypes = {
 Square.defaultProps = {
     x: 0,
     y: 0,
-}
+};

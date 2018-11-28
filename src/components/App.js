@@ -1,6 +1,7 @@
 ﻿import React, { PureComponent } from "react";
 import Button from "./Button";
 import Square from "./Square";
+import DBView from "./DBView";
 
 export default class App extends PureComponent {
     render() {
@@ -8,6 +9,7 @@ export default class App extends PureComponent {
             <div className="app">
                 <Button />
                 <Square />
+                <DBView />
             </div>
         );
     }
