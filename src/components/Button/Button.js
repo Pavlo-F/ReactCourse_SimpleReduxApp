@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import move from "../actions/moveButtonAction";
 
-class Button extends React.PureComponent {
+
+export default class Button extends React.PureComponent {
     onMoveBtnClick = () => {
         const { x, y } = this.props.shape;
         this.props.move(x + 1, y + 1);
@@ -25,20 +24,14 @@ class Button extends React.PureComponent {
     }
 }
 
-
-const mapStateToProps = store => ({
-    shape: store.shape,
-});
-
-const mapDispatchToProps = dispatch => ({
-    move: (x, y) => dispatch(move(x, y)),
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(Button);
-
 Button.propTypes = {
     move: PropTypes.func.isRequired,
+    shape: PropTypes.shape({
+        x: PropTypes.number,
+        y: PropTypes.number,
+    }),
 };
+
+Button.defaultProps = {
+    shape: { x: 0, y: 0 },
+}
