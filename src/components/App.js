@@ -1,15 +1,17 @@
 ﻿import React, { PureComponent } from "react";
 import Button from "./Button";
-import Square from "./Square";
 import DBView from "./DBView";
+import ShapeContainer from "./ShapeContainer";
 
 export default class App extends PureComponent {
     render() {
         return (
             <div className="app">
                 <Button />
-                <Square />
+
                 <DBView />
+
+                <ShapeContainer />
             </div>
         );
     }

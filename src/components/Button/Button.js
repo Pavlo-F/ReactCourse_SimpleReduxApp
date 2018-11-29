@@ -4,20 +4,41 @@ import PropTypes from "prop-types";
 
 export default class Button extends React.PureComponent {
     onMoveBtnClick = () => {
-        const { x, y } = this.props.shape;
+        const { points } = this.props.dataBase.raw;
+
+        if (points) {
+            this.props.move(points, Button.movingAlg);
+        }
+    }
 
 
-        // !!! передать массив и функцию которая будет создавать новый массив и ложить в payload
-        this.props.move(x + 1, y + 1);
+    static movingAlg(points) {
+        let result = points.map((point) => {
+            return { x: point.x + 1, y: point.y, id: point.id };
+        });
+
+        return result;
     }
 
     onShowDBDataBtnClick = () => {
-        this.props.getDBData("sss");
+        this.props.getDBData("test");
+    }
+
+    onCreateDBDataBtnClick = () => {
+        const data = {
+            points: [
+                { x: 1, y: 1, id: "ew3ty4rfq" },
+                { x: 1, y: 2, id: "kldsfcdf" },
+                { x: 2, y: 3, id: "sfbhn56y" },
+                { x: 2, y: 4, id: "54uh5rmnj" },
+            ],
+        };
+
+
+        this.props.setDBData("test", data);
     }
 
     render() {
-        const { x, y } = this.props.shape;
-
         return (
             <div>
                 <button onClick={this.onMoveBtnClick} >
@@ -26,9 +47,9 @@ export default class Button extends React.PureComponent {
                 <button onClick={this.onShowDBDataBtnClick} >
                     Данные БД
                 </button>
-                <div>
-                    current point: {x}, {y}
-                </div>
+                <button onClick={this.onCreateDBDataBtnClick} >
+                    Создать данные
+                </button>
             </div>
         );
     }
@@ -37,15 +58,9 @@ export default class Button extends React.PureComponent {
 Button.propTypes = {
     move: PropTypes.func.isRequired,
     getDBData: PropTypes.func.isRequired,
-    shape: PropTypes.shape({
-        x: PropTypes.number,
-        y: PropTypes.number,
-    }),
+    points: PropTypes.object,
 };
 
 Button.defaultProps = {
-    shape: {
-        x: 0,
-        y: 0,
-    },
+    points: [],
 };

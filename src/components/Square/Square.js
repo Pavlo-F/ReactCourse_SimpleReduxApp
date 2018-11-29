@@ -10,6 +10,7 @@ const Square = ({ x, y }) => (
         width: "50px",
         height: "50px",
         backgroundColor: "lightblue",
+        border: "1px solid",
     }}>
 
     </div>

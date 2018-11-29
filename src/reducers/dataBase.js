@@ -2,10 +2,11 @@
     GET_DB_DATA_FETCHING,
     GET_DB_DATA_SUCCESS,
     GET_DB_DATA_ERROR,
+    MOVE_SHAPE,
 } from "../consts/const";
 
 const initialState = {
-    raw: {},
+    raw: [],
     error: null,
     isFetching: false,
 };
@@ -29,6 +30,13 @@ export default function worldReducer(state = initialState, action) {
         return {
             ...state,
             error: action.payload.error.message,
+            isFetching: false,
+        };
+
+    case MOVE_SHAPE:
+        return {
+            ...state,
+            raw: { points: [...action.payload] },
             isFetching: false,
         };
 
