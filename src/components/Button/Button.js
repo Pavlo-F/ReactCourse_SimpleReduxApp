@@ -24,6 +24,11 @@ export default class Button extends React.PureComponent {
         this.props.getDBData("test");
     }
 
+    onSaveDBDataBtnClick = () => {
+        const data = { ...this.props.dataBase.raw };
+        this.props.setDBData("test", data);
+    }
+
     onCreateDBDataBtnClick = () => {
         const data = {
             points: [
@@ -45,7 +50,10 @@ export default class Button extends React.PureComponent {
                     Шаг
                 </button>
                 <button onClick={this.onShowDBDataBtnClick} >
-                    Данные БД
+                    Получить данные
+                </button>
+                <button onClick={this.onSaveDBDataBtnClick} >
+                    Сохранить данные
                 </button>
                 <button onClick={this.onCreateDBDataBtnClick} >
                     Создать данные
