@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import move from "../../actions/moveButtonAction";
+import behave from "../../actions/moveButtonAction";
 import { getDBData, setDBData } from "../../actions/dataBaseAction";
 import Button from "./Button";
 
@@ -8,7 +8,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    move: (points, algoritm) => dispatch(move(points, algoritm)),
+    behave: (points, algoritm) => dispatch(behave(points, algoritm)),
     getDBData: name => dispatch(getDBData(name)),
     setDBData: (name, rawData) => dispatch(setDBData(name, rawData)),
 });

@@ -6,16 +6,14 @@ export default class ShapeContainer extends React.PureComponent {
     render() {
         const { raw } = this.props;
 
-        const time = Date.now();
         console.log(this.props);
 
         if (raw.points) {
             return (
                 <div>
                     {
-                        raw.points.map((point, index) => (
-                            <Square {...point} key={`point_${time - index}`} />
-                        ))
+                        raw.points.map(point => <Square {...point} key={`point_${point.id}`}
+                        />)
                     }
                 </div>
             );

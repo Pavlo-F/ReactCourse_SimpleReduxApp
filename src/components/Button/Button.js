@@ -1,34 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import MOVE from "../../consts/algorithms";
 
 export default class Button extends React.PureComponent {
     onMoveBtnClick = () => {
         const { points } = this.props.dataBase.raw;
 
         if (points) {
-            this.props.move(points, Button.movingAlg);
+            this.props.behave(points, MOVE);
         }
     }
 
-
-    static movingAlg(points) {
-        let result = points.map((point) => {
-            return { x: point.x + 1, y: point.y, id: point.id };
-        });
-
-        return result;
-    }
-
-    onShowDBDataBtnClick = () => {
-        this.props.getDBData("test");
-    }
-
-    onSaveDBDataBtnClick = () => {
-        const data = { ...this.props.dataBase.raw };
-        this.props.setDBData("test", data);
-    }
-
+    onShowDBDataBtnClick = () => this.props.getDBData("test");
+    
+    onSaveDBDataBtnClick = () => this.props.setDBData("test", this.props.dataBase.raw);
+    
     onCreateDBDataBtnClick = () => {
         const data = {
             points: [
@@ -64,7 +50,7 @@ export default class Button extends React.PureComponent {
 }
 
 Button.propTypes = {
-    move: PropTypes.func.isRequired,
+    behave: PropTypes.func.isRequired,
     getDBData: PropTypes.func.isRequired,
     points: PropTypes.object,
 };

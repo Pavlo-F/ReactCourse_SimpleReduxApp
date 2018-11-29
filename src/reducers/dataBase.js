@@ -22,7 +22,7 @@ export default function worldReducer(state = initialState, action) {
     case GET_DB_DATA_SUCCESS:
         return {
             ...state,
-            raw: { ...action.payload.raw },
+            raw: action.payload.raw,
             isFetching: false,
         };
 
